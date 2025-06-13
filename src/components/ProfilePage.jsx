@@ -33,7 +33,7 @@ export default function ProfilePage({ userData }) {
                         {/* Avatar wrapped with label to open file picker */}
                         <label htmlFor="upload-photo" className="cursor-pointer block relative">
                             <img
-                                src={profileImage || "public/user.jpg"}
+                                src={profileImage || "/user.jpg"}
                                 alt="avatar"
                                 className="w-16 h-16 rounded-full object-cover"
                             />
