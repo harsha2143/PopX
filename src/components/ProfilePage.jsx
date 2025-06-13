@@ -33,7 +33,7 @@ export default function ProfilePage({ userData }) {
                         {/* Avatar wrapped with label to open file picker */}
                         <label htmlFor="upload-photo" className="cursor-pointer block relative">
                             <img
-                                src={profileImage || "https://via.placeholder.com/64"}
+                                src={profileImage || "public/user.jpg"}
                                 alt="avatar"
                                 className="w-16 h-16 rounded-full object-cover"
                             />
@@ -47,9 +47,9 @@ export default function ProfilePage({ userData }) {
                         </label>
                     </div>
 
-                    <div className="flex-1">
-                        <h2 className="text-sm font-bold text-gray-900">  {email?.split("@")[0]}</h2>
-                        <p className="text-sm text-gray-600">{email}</p>
+                    <div className="flex-1 min-w-0">
+                        <h2 className="text-sm font-bold text-gray-900 break-words">  {email?.split("@")[0]}</h2>
+                        <p className="text-sm text-gray-600 break-words">{email}</p>
                     </div>
                 </div>
 
@@ -57,6 +57,7 @@ export default function ProfilePage({ userData }) {
                 <p className="text-xs text-gray-600 mt-4 leading-relaxed">
                     {description || `Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam`}
                 </p>
+                
             </div>
         </div>
     );

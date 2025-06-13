@@ -10,8 +10,7 @@ export default function LoginPage({ onLogin }) {
             onLogin({ email });
         }
     };
-
-    const isDisabled = !email || !password;
+    const isDisabled = !email || !password || !email.includes('@');
 
     return (
         <div className="bg-gray-100 p-6 min-h-[95vh] border border-gray-300 w-80 mt-6">
@@ -27,13 +26,15 @@ export default function LoginPage({ onLogin }) {
                     <input
                         type="email"
                         value={email}
-                        
+
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter email address"
                         className="w-full border-none outline-none bg-transparent text-gray-700 placeholder-gray-400 text-sm"
                     />
                 </div>
-
+                {email && !email.includes("@") && (
+                    <p className="text-xs text-red-600 mt-1">Please enter a valid email address.</p>
+                )}
             </div>
             <div className="relative border border-gray-300 rounded-lg px-3 pt-2 pb-2 bg-gray-100 mb-3">
                 <label className="absolute -top-2 left-3 bg-gray-100 text-purple-700 text-xs font-semibold px-1">

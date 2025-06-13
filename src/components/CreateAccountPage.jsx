@@ -24,12 +24,12 @@ export default function CreateAccountPage({ onCreate }) {
   };
 
   const isDisabled =
-    !formData.fullName || !formData.phoneNumber || !formData.email || !formData.password;
+    !formData.fullName || !formData.phoneNumber || !formData.email || !formData.password || !formData.email.includes('@');
 
   return (
     <div className="flex flex-col bg-gray-100 p-6 border border-gray-300 w-80 min-h-[95vh] mt-6 ">
       <h1 className="text-3xl font-bold text-black mb-5">Create  your  PopX account</h1>
-      
+
       <div className="relative border border-gray-300 rounded-lg px-3 pt-2 pb-2 bg-gray-100 mb-4">
         <label className="absolute -top-2 left-3 bg-gray-100 text-purple-700 text-xs font-semibold px-1">
           Full Name*
@@ -57,8 +57,8 @@ export default function CreateAccountPage({ onCreate }) {
           className="w-full border-none outline-none bg-transparent text-gray-700 placeholder-gray-400 text-xs"
         />
       </div>
-
-      <div className="relative border border-gray-300 rounded-lg px-3 pt-2 pb-2 bg-gray-100 mb-4">
+      <div className="mb-4">
+      <div className="relative border border-gray-300 rounded-lg px-3 pt-2 pb-2 bg-gray-100 ">
         <label className="absolute -top-2 left-3 bg-gray-100 text-purple-700 text-xs font-semibold px-1">Email address*</label>
         <input
           type="email"
@@ -69,6 +69,10 @@ export default function CreateAccountPage({ onCreate }) {
           required
           className="w-full border-none outline-none bg-transparent text-gray-700 placeholder-gray-400 text-xs"
         />
+        </div>
+        {formData.email && !formData.email.includes("@") && (
+          <p className="text-xs text-red-600 mt-1">Please enter a valid email address.</p>
+        )}
       </div>
 
       <div className="relative border border-gray-300 rounded-lg px-3 pt-2 pb-2 bg-gray-100 mb-4 relative">
@@ -172,16 +176,15 @@ export default function CreateAccountPage({ onCreate }) {
       </div>
 
       <button
-    className={`mt-auto w-full py-2 rounded-lg transition-colors ${
-      isDisabled
-        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-        : 'bg-purple-600 text-white hover:bg-purple-700'
-    }`}
-    onClick={handleCreate}
-    disabled={isDisabled}
-  >
-    Create Account
-  </button>
+        className={`mt-auto w-full py-2 rounded-lg transition-colors ${isDisabled
+            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            : 'bg-purple-600 text-white hover:bg-purple-700'
+          }`}
+        onClick={handleCreate}
+        disabled={isDisabled}
+      >
+        Create Account
+      </button>
     </div>
   );
 }
